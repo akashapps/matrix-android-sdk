@@ -41,6 +41,7 @@ import org.matrix.androidsdk.common.CryptoTestData;
 import org.matrix.androidsdk.common.CryptoTestHelper;
 import org.matrix.androidsdk.common.TestApiCallback;
 import org.matrix.androidsdk.common.TestConstants;
+import org.matrix.androidsdk.crypto.data.ImportRoomKeysResult;
 import org.matrix.androidsdk.crypto.data.MXDeviceInfo;
 import org.matrix.androidsdk.crypto.data.MXOlmSessionResult;
 import org.matrix.androidsdk.crypto.data.MXUsersDevicesMap;
