@@ -268,6 +268,19 @@ public interface IMXCryptoStore {
     List<String> getRoomsListBlacklistUnverifiedDevices();
 
     /**
+     * Set the current keys backup version
+     *
+     * @param keyBackupVersion the keys backup version or null to delete it
+     */
+    void setKeyBackupVersion(@Nullable String keyBackupVersion);
+
+    /**
+     * Get the current keys backup version
+     */
+    @Nullable
+    String getKeyBackupVersion();
+
+    /**
      * @return the devices statuses map (userId -> tracking status)
      */
     Map<String, Integer> getDeviceTrackingStatuses();

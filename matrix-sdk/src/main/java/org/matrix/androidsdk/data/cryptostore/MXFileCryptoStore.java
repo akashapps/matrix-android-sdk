@@ -1146,6 +1146,28 @@ public class MXFileCryptoStore implements IMXCryptoStore {
         }
     }
 
+    @Override
+    public void setKeyBackupVersion(@Nullable String keyBackupVersion) {
+        if (!mIsReady) {
+            Log.e(LOG_TAG, "## setKeyBackupVersion() : the store is not ready");
+            return;
+        }
+
+        mMetaData.mKeysBackupVersion = keyBackupVersion;
+        saveMetaData();
+    }
+
+    @Nullable
+    @Override
+    public String getKeyBackupVersion() {
+        if (!mIsReady) {
+            Log.e(LOG_TAG, "## setKeyBackupVersion() : the store is not ready");
+            return null;
+        }
+
+        return mMetaData.mKeysBackupVersion;
+    }
+
     /**
      * save the outgoing room key requests.
      */
