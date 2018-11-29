@@ -57,9 +57,6 @@ public class MXOlmInboundGroupSession2 implements Serializable {
     // Devices which forwarded this session to us (normally empty).
     public List<String> mForwardingCurve25519KeyChain = new ArrayList<>();
 
-    // Tell if the inbound group session has been backed up on the homeserver (default to false)
-    public boolean mIsBackedUp;
-
     /**
      * Constructor
      *
