@@ -18,7 +18,7 @@ package org.matrix.androidsdk.roomkeys
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
-import org.junit.Assert
+import org.junit.Assert.*
 import org.junit.FixMethodOrder
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -50,7 +50,7 @@ class RoomKeysRestClientTest {
         bobSession.roomKeysRestClient
                 .getKeysBackupVersion(null, object : TestApiCallback<KeysVersionResult>(lock, false) {
                     override fun onMatrixError(e: MatrixError) {
-                        Assert.assertEquals(MatrixError.NOT_FOUND, e.errcode)
+                        assertEquals(MatrixError.NOT_FOUND, e.errcode)
                         super.onMatrixError(e)
                     }
                 })
@@ -88,10 +88,10 @@ class RoomKeysRestClientTest {
                 })
         mTestHelper.await(lock)
 
-        Assert.assertNotNull(keysVersion)
+        assertNotNull(keysVersion)
 
         val version = keysVersion!!.version
-        Assert.assertNotNull(version)
+        assertNotNull(version)
 
         var keysVersionResult: KeysVersionResult? = null
         lock = CountDownLatch(1)
@@ -106,14 +106,14 @@ class RoomKeysRestClientTest {
         mTestHelper.await(lock)
 
         // Check that all the fields are the same
-        Assert.assertNotNull(keysVersionResult)
-        Assert.assertEquals(version, keysVersionResult!!.version)
-        Assert.assertEquals(createKeysBackupVersionBody.algorithm, keysVersionResult!!.algorithm)
+        assertNotNull(keysVersionResult)
+        assertEquals(version, keysVersionResult!!.version)
+        assertEquals(createKeysBackupVersionBody.algorithm, keysVersionResult!!.algorithm)
 
         val retrievedMegolmBackupAuthData = keysVersionResult!!.getAuthDataAsMegolmBackupAuthData()
 
-        Assert.assertEquals(megolmBackupAuthData.publicKey, retrievedMegolmBackupAuthData.publicKey)
-        Assert.assertEquals(megolmBackupAuthData.signatures, retrievedMegolmBackupAuthData.signatures)
+        assertEquals(megolmBackupAuthData.publicKey, retrievedMegolmBackupAuthData.publicKey)
+        assertEquals(megolmBackupAuthData.signatures, retrievedMegolmBackupAuthData.signatures)
 
         bobSession.clear(context)
     }
@@ -148,9 +148,9 @@ class RoomKeysRestClientTest {
                 })
         mTestHelper.await(lock)
 
-        Assert.assertNotNull(keysVersion)
+        assertNotNull(keysVersion)
         val version = keysVersion!!.version
-        Assert.assertNotNull(version)
+        assertNotNull(version)
 
         // Make a backup
         val keys = HashMap<String, String>()
@@ -185,13 +185,13 @@ class RoomKeysRestClientTest {
         mTestHelper.await(lock)
 
         // Check that all the fields are the same
-        Assert.assertNotNull(keysBackupDataResult)
+        assertNotNull(keysBackupDataResult)
         val retrievedKeyBackupData = keysBackupDataResult!!.roomIdToRoomKeysBackupData[roomId]!!.sessionIdToKeyBackupData[sessionId]!!
 
-        Assert.assertEquals(keyBackupData.firstMessageIndex, retrievedKeyBackupData.firstMessageIndex)
-        Assert.assertEquals(keyBackupData.forwardedCount, retrievedKeyBackupData.forwardedCount)
-        Assert.assertEquals(keyBackupData.isVerified, retrievedKeyBackupData.isVerified)
-        Assert.assertEquals(keyBackupData.sessionData, retrievedKeyBackupData.sessionData)
+        assertEquals(keyBackupData.firstMessageIndex, retrievedKeyBackupData.firstMessageIndex)
+        assertEquals(keyBackupData.forwardedCount, retrievedKeyBackupData.forwardedCount)
+        assertEquals(keyBackupData.isVerified, retrievedKeyBackupData.isVerified)
+        assertEquals(keyBackupData.sessionData, retrievedKeyBackupData.sessionData)
 
         bobSession.clear(context)
     }
@@ -227,9 +227,9 @@ class RoomKeysRestClientTest {
                 })
         mTestHelper.await(lock)
 
-        Assert.assertNotNull(keysVersion)
+        assertNotNull(keysVersion)
         val version = keysVersion!!.version
-        Assert.assertNotNull(version)
+        assertNotNull(version)
 
         // Make a backup
         val keys = HashMap<String, String>()
@@ -270,8 +270,8 @@ class RoomKeysRestClientTest {
         mTestHelper.await(lock)
 
         // Check that all the fields are the same
-        Assert.assertNotNull(keysBackupDataResult)
-        Assert.assertTrue(keysBackupDataResult!!.roomIdToRoomKeysBackupData.isEmpty())
+        assertNotNull(keysBackupDataResult)
+        assertTrue(keysBackupDataResult!!.roomIdToRoomKeysBackupData.isEmpty())
 
         bobSession.clear(context)
     }
