@@ -200,7 +200,7 @@ class KeysBackupTest {
 
         val keys = cryptoStore.inboundGroupSessionsCount(false)
 
-        val latch3 = CountDownLatch(1)
+        val latch = CountDownLatch(1)
         keysBackup.addListener(object : KeysBackupStateManager.KeysBackupStateListener {
             override fun onStateChange(newState: KeysBackupStateManager.KeysBackupState) {
                 // Check the backup completes
@@ -211,11 +211,11 @@ class KeysBackupTest {
                     val backedUpKeys = cryptoStore.inboundGroupSessionsCount(true)
 
                     Assert.assertEquals("All keys must have been marked as backed up", keys, backedUpKeys)
-                    latch3.countDown()
+                    latch.countDown()
                 }
             }
         })
-        mTestHelper.await(latch3)
+        mTestHelper.await(latch)
 
         cryptoTestData.clear(context)
     }

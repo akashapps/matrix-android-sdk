@@ -18,13 +18,11 @@ package org.matrix.androidsdk.crypto
 
 import android.support.test.InstrumentationRegistry
 import android.text.TextUtils
-import android.util.Pair
 import org.junit.Assert
 import org.junit.Assert.*
 import org.junit.FixMethodOrder
 import org.junit.Test
 import org.junit.runners.MethodSorters
-import org.matrix.androidsdk.MXSession
 import org.matrix.androidsdk.common.*
 import org.matrix.androidsdk.crypto.data.MXDeviceInfo
 import org.matrix.androidsdk.data.RoomState
@@ -34,11 +32,7 @@ import org.matrix.androidsdk.data.cryptostore.db.RealmCryptoStore
 import org.matrix.androidsdk.data.timeline.EventTimeline
 import org.matrix.androidsdk.listeners.MXEventListener
 import org.matrix.androidsdk.rest.model.Event
-import org.matrix.androidsdk.rest.model.MatrixError
-import org.matrix.androidsdk.rest.model.RoomMember
 import org.matrix.androidsdk.rest.model.crypto.RoomKeyRequestBody
-import org.matrix.androidsdk.rest.model.message.Message
-import org.matrix.androidsdk.util.JsonUtils
 import org.matrix.androidsdk.util.Log
 import org.matrix.olm.OlmAccount
 import org.matrix.olm.OlmSession

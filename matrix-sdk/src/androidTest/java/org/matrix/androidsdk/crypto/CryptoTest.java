@@ -142,15 +142,7 @@ public class CryptoTest {
         Assert.assertNotNull(myUserDevices);
         Assert.assertEquals(1, myUserDevices.size());
 
-        final Credentials bobCredentials = bobSession.getCredentials();
-
-        HomeServerConnectionConfig hs = mTestHelper.createHomeServerConfig(bobCredentials);
-
-        IMXStore store = new MXFileStore(hs, false, context);
-
-        MXSession bobSession2 = new MXSession.Builder(hs, new MXDataHandler(store, bobCredentials), context)
-                .withLegacyCryptoStore(mCryptoTestHelper.getUSE_LEGACY_CRYPTO_STORE())
-                .build();
+        MXSession bobSession2 = mTestHelper.createNewSession(bobSession, mCryptoTestHelper.getDefaultSessionParams());
 
         final CountDownLatch lock1 = new CountDownLatch(1);
         MXStoreListener listener = new MXStoreListener() {
@@ -319,15 +311,7 @@ public class CryptoTest {
 
         Assert.assertTrue(aliceDeviceFromBobPOV.isBlocked());
 
-        Credentials bobCredentials = bobSession.getCredentials();
-
-        HomeServerConnectionConfig hs = mTestHelper.createHomeServerConfig(bobCredentials);
-
-        IMXStore store = new MXFileStore(hs, false, context);
-
-        MXSession bobSession2 = new MXSession.Builder(hs, new MXDataHandler(store, bobCredentials), context)
-                .withLegacyCryptoStore(mCryptoTestHelper.getUSE_LEGACY_CRYPTO_STORE())
-                .build();
+        MXSession bobSession2 = mTestHelper.createNewSession(bobSession, mCryptoTestHelper.getDefaultSessionParams());
 
         final CountDownLatch lock4 = new CountDownLatch(1);
 
@@ -489,15 +473,7 @@ public class CryptoTest {
         Assert.assertNotNull(sessionWithAliceDevice.mSessionId);
         Assert.assertEquals("AliceDevice", sessionWithAliceDevice.mDevice.deviceId);
 
-        Credentials bobCredentials = bobSession.getCredentials();
-
-        HomeServerConnectionConfig hs = mTestHelper.createHomeServerConfig(bobCredentials);
-
-        IMXStore store = new MXFileStore(hs, false, context);
-
-        MXSession bobSession2 = new MXSession.Builder(hs, new MXDataHandler(store, bobCredentials), context)
-                .withLegacyCryptoStore(mCryptoTestHelper.getUSE_LEGACY_CRYPTO_STORE())
-                .build();
+        MXSession bobSession2 = mTestHelper.createNewSession(bobSession, mCryptoTestHelper.getDefaultSessionParams());
 
         final CountDownLatch lock5 = new CountDownLatch(1);
 
