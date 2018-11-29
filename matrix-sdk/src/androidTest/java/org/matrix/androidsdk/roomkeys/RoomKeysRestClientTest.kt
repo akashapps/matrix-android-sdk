@@ -44,7 +44,7 @@ class RoomKeysRestClientTest {
         Log.e(LOG_TAG, "RoomKeysTest_getVersion")
 
         val context = InstrumentationRegistry.getContext()
-        val bobSession = mTestHelper.createAccount(TestConstants.USER_BOB, SessionTestParams.newBuilder().build())
+        val bobSession = mTestHelper.createAccount(TestConstants.USER_BOB, SessionTestParams())
 
         val lock = CountDownLatch(1)
         bobSession.roomKeysRestClient
@@ -69,7 +69,7 @@ class RoomKeysRestClientTest {
         Log.e(LOG_TAG, "RoomKeysTest_createVersion_ok")
 
         val context = InstrumentationRegistry.getContext()
-        val bobSession = mTestHelper.createAccount(TestConstants.USER_BOB, SessionTestParams.newBuilder().build())
+        val bobSession = mTestHelper.createAccount(TestConstants.USER_BOB, SessionTestParams())
 
         val megolmBackupAuthData = mCryptoTestHelper.createFakeMegolmBackupAuthData()
 
@@ -129,7 +129,7 @@ class RoomKeysRestClientTest {
         Log.e(LOG_TAG, "RoomKeysTest_createVersion_ok")
 
         val context = InstrumentationRegistry.getContext()
-        val bobSession = mTestHelper.createAccount(TestConstants.USER_BOB, SessionTestParams.newBuilder().build())
+        val bobSession = mTestHelper.createAccount(TestConstants.USER_BOB, SessionTestParams())
 
         val megolmBackupAuthData = mCryptoTestHelper.createFakeMegolmBackupAuthData()
 
@@ -208,7 +208,7 @@ class RoomKeysRestClientTest {
         Log.e(LOG_TAG, "RoomKeysTest_createVersion_ok")
 
         val context = InstrumentationRegistry.getContext()
-        val bobSession = mTestHelper.createAccount(TestConstants.USER_BOB, SessionTestParams.newBuilder().build())
+        val bobSession = mTestHelper.createAccount(TestConstants.USER_BOB, SessionTestParams())
 
         val megolmBackupAuthData = mCryptoTestHelper.createFakeMegolmBackupAuthData()
 

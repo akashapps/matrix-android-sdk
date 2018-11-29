@@ -149,7 +149,7 @@ public class CryptoTest {
         IMXStore store = new MXFileStore(hs, false, context);
 
         MXSession bobSession2 = new MXSession.Builder(hs, new MXDataHandler(store, bobCredentials), context)
-                .withLegacyCryptoStore(mCryptoTestHelper.USE_LEGACY_CRYPTO_STORE)
+                .withLegacyCryptoStore(mCryptoTestHelper.getUSE_LEGACY_CRYPTO_STORE())
                 .build();
 
         final CountDownLatch lock1 = new CountDownLatch(1);
@@ -326,7 +326,7 @@ public class CryptoTest {
         IMXStore store = new MXFileStore(hs, false, context);
 
         MXSession bobSession2 = new MXSession.Builder(hs, new MXDataHandler(store, bobCredentials), context)
-                .withLegacyCryptoStore(mCryptoTestHelper.USE_LEGACY_CRYPTO_STORE)
+                .withLegacyCryptoStore(mCryptoTestHelper.getUSE_LEGACY_CRYPTO_STORE())
                 .build();
 
         final CountDownLatch lock4 = new CountDownLatch(1);
@@ -496,7 +496,7 @@ public class CryptoTest {
         IMXStore store = new MXFileStore(hs, false, context);
 
         MXSession bobSession2 = new MXSession.Builder(hs, new MXDataHandler(store, bobCredentials), context)
-                .withLegacyCryptoStore(mCryptoTestHelper.USE_LEGACY_CRYPTO_STORE)
+                .withLegacyCryptoStore(mCryptoTestHelper.getUSE_LEGACY_CRYPTO_STORE())
                 .build();
 
         final CountDownLatch lock5 = new CountDownLatch(1);
@@ -900,7 +900,7 @@ public class CryptoTest {
         final CountDownLatch lock1 = new CountDownLatch(1);
 
         final MXSession aliceSession2 = new MXSession.Builder(hs, new MXDataHandler(store, aliceCredentials), context)
-                .withLegacyCryptoStore(mCryptoTestHelper.USE_LEGACY_CRYPTO_STORE)
+                .withLegacyCryptoStore(mCryptoTestHelper.getUSE_LEGACY_CRYPTO_STORE())
                 .build();
 
         MXStoreListener listener = new MXStoreListener() {
@@ -1035,7 +1035,7 @@ public class CryptoTest {
         IMXStore store = new MXFileStore(hs, false, context);
 
         MXSession aliceSession2 = new MXSession.Builder(hs, new MXDataHandler(store, aliceCredentials2), context)
-                .withLegacyCryptoStore(mCryptoTestHelper.USE_LEGACY_CRYPTO_STORE)
+                .withLegacyCryptoStore(mCryptoTestHelper.getUSE_LEGACY_CRYPTO_STORE())
                 .build();
 
         aliceSession2.enableCryptoWhenStarting();
@@ -1129,7 +1129,7 @@ public class CryptoTest {
         final CountDownLatch lock1 = new CountDownLatch(2);
 
         MXSession bobSession2 = new MXSession.Builder(hs, new MXDataHandler(store, bobCredentials), context)
-                .withLegacyCryptoStore(mCryptoTestHelper.USE_LEGACY_CRYPTO_STORE)
+                .withLegacyCryptoStore(mCryptoTestHelper.getUSE_LEGACY_CRYPTO_STORE())
                 .build();
 
         MXEventListener eventListener = new MXEventListener() {
@@ -2448,7 +2448,7 @@ public class CryptoTest {
         IMXStore store = new MXFileStore(hs, false, context);
 
         MXSession aliceSession2 = new MXSession.Builder(hs, new MXDataHandler(store, aliceCredentials2), context)
-                .withLegacyCryptoStore(mCryptoTestHelper.USE_LEGACY_CRYPTO_STORE)
+                .withLegacyCryptoStore(mCryptoTestHelper.getUSE_LEGACY_CRYPTO_STORE())
                 .build();
 
         aliceSession2.enableCryptoWhenStarting();

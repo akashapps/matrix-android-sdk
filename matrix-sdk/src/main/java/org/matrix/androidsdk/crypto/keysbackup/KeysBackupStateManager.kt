@@ -26,7 +26,7 @@ class KeysBackupStateManager {
     // Backup state
     var state = KeysBackupState.Unknown
         set(newState) {
-            Log.d(KeysBackup::class.simpleName, "setState: $field -> $newState")
+            Log.d("KeysBackup", "setState: $field -> $newState")
 
             field = newState
 

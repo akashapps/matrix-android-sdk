@@ -35,7 +35,6 @@ import org.matrix.androidsdk.rest.callback.SuccessCallback
 import org.matrix.androidsdk.rest.callback.SuccessErrorCallback
 import org.matrix.androidsdk.rest.model.keys.KeysVersion
 import org.matrix.androidsdk.rest.model.keys.KeysVersionResult
-import java.lang.Exception
 import java.util.concurrent.CountDownLatch
 
 @RunWith(AndroidJUnit4::class)
@@ -45,9 +44,7 @@ class KeysBackupTest {
     private val mTestHelper = CommonTestHelper()
     private val mCryptoTestHelper = CryptoTestHelper(mTestHelper)
 
-    private val defaultSessionParams = SessionTestParams.newBuilder()
-            .withCryptoEnabled(true)
-            .build()
+    private val defaultSessionParams = SessionTestParams(false, true, true, false)
 
     /**
      * - From doE2ETestWithAliceAndBobInARoomWithEncryptedMessages, we should have no backed up keys
@@ -355,7 +352,7 @@ class KeysBackupTest {
                             val aliceKey2 = aliceSession2.crypto!!
                                     .cryptoStore.getInboundGroupSession(aliceKey1.mSession.sessionIdentifier(), aliceKey1.mSenderKey)
                             Assert.assertNotNull(aliceKey2)
-                            Assert.assertEquals(aliceKey1.exportKeys(), aliceKey2.exportKeys())
+                            Assert.assertEquals(aliceKey1.exportKeys(), aliceKey2!!.exportKeys())
                         }
 
                         super.onSuccess(info)
@@ -624,7 +621,7 @@ class KeysBackupTest {
                 latch.countDown()
             }
         })
-        latch.await()
+        mTestHelper.await(latch)
 
         assertNotNull(megolmBackupCreationInfo)
 
