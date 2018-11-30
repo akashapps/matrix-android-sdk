@@ -158,6 +158,8 @@ public class EventsRestClient extends RestClient<EventsApi> {
             publicRoomsParams.filter.generic_search_term = pattern;
         }
 
+        publicRoomsParams.server = server;
+
         mApi.publicRooms(server, publicRoomsParams)
                 .enqueue(new RestAdapterCallback<PublicRoomsResponse>(description, mUnsentEventsManager, callback,
                         new RestAdapterCallback.RequestRetryCallBack() {

@@ -44,4 +44,6 @@ public class PublicRoomsParams {
      * Filter parameters
      **/
     public PublicRoomsFilter filter;
+
+    public String server;
 }
